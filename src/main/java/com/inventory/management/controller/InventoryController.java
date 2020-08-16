@@ -1,10 +1,7 @@
 package com.inventory.management.controller;
 
-import com.inventory.management.models.Product;
 import com.inventory.management.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/add")
