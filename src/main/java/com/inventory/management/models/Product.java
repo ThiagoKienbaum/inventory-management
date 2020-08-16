@@ -28,6 +28,14 @@ public class Product implements Serializable {
         this.quantity += quantityToAdd;
     }
 
+    public void sellProduct (Sale sale) {
+        if (this.quantity >= sale.getSoldQuantity()) {
+            this.quantity -= sale.getSoldQuantity();
+            this.totalSold += sale.getSoldQuantity();
+            this.totalProfit = (sale.getPricePerProduct() - this.cost) * this.totalSold;
+        }
+    }
+
     public Long getId() {
         return id;
     }
