@@ -12,13 +12,21 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String category;
+    @Column(nullable = false)
     private double cost;
-
+    @Column(nullable = false)
     private int quantity;
-    private int totalSold;
-    private double totalProfit;
+
+    private int totalSold = 0;
+    private double totalProfit = 0;
+
+    public void addProductToInventory (int quantityToAdd) {
+        this.quantity += quantityToAdd;
+    }
 
     public Long getId() {
         return id;
