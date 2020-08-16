@@ -2,10 +2,10 @@ package com.inventory.management.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
-public class Inventory implements Serializable {
+@Table(name="inventory")
+public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
