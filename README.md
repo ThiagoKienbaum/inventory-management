@@ -16,23 +16,18 @@ This project is a backend API REST to manage inventory.
 
 Feel free to use it to practice/develop your frontend.
 
-A live version of the frontend web can be seen [here](https://).
-
-A live version of API can be accessed [here](http://).
-
-
 ## Built with
-* Java 
+* Java
+    - Spring Framework
+    - JPA
+    - Maven
 * Database
     - PostgreSQL
-    - MongoDB
 * ORM
-    - Sequelize
-    - Mongoose
+    - Hibernate
 * Design pattern
     - MVC    
 * Others
-    - Sentry
     - Docker
     - API REST
     
@@ -43,93 +38,80 @@ git clone https://github.com/ThiagoKienbaum/inventory-management-backend.git
 
 cd inventory-management-backend
 
-yarn
 ```
-Create a .env file on root of project and setup the environment variables like .env.example file.
 
 ### On docker, run:
 ```
 docker run --name <database-name> -e POSTGRES_PASSWORD=<password> -p 5432:5432 -d postgres
 
-docker run --name <database-name> -p 27017:27017 -d -t mongo
-
 ```
 
-### Run the project
-```
-yarn dev 
-```
+### Run the Application class
 
-Now you can access the API on your localhost:3333
+Now you can access the API on your localhost:8080
 
 ## Usage guide
 
-* Create a user
-  - Post/users
+* Create a product
+  - Post/inventory
   - Body
  ```  
  {
-  "name": "",
-	"github_id": "",
-	"email": "",
-	"password": "",
-	"confirmPassword": ""
+    "name": <String>,
+    "category": <String>,
+    "cost": <double>,
+    "quantity": <int>
   }
   ```
-  
-* Login
-  - Post/sessions
+
+
+* Return all inventory products
+  - Get/inventory
+
+
+* Filter products by category
+  - Get/inventory/{category}
+
+
+* Update a product
+  - Put/inventory
   - Body
- ```  
+ ```
  {
-  "email": "",
-	"password": "",	
-  }
-  ```
-  
-### After this point, you need to send a valid Bearer Token on Authoziration.
-* Update a user 
-  - Post/users
-  - Body (send information you want to update)
- ```  
+    "id": <int>,
+    "name": <String>,
+    "category": <String>,
+    "cost": <double>,
+    "quantity": <int>
+ }
+ ```
+
+
+* Delete a product
+  - Delete/inventory/{id}
+
+
+* Add a quantity of a product to inventory
+  - Put/add/{id}
+  - Body
+ ```
  {
-  "name": "",
-	"github_id": "",
-	"email": "",
-	"password": ""
-  }
-```
+    <int>
+ }
+ ```
 
-* Return all repositories
-  - Get/repositories
 
-* Create a tag
-  - Post/tags/:RepositoryID
-  - Body 
- ```  
-{
-  "newTag": ""
-}
-  ```  
-  
-* Filter per tag
-  - Post/tags/:tag
-    
-* Update a tag
-  - Post/tags/:RepositoryID/:tag
-  - Body 
- ```  
-{
-  "updatedTag": ""
-}
-  ```  
-  
-* Delete a tag
-  - Post/tags/:RepositoryID/:tag
-  - Body   
-  
-  
-  
+* Sell a product
+  - Put/sales/{id}
+  - Body
+ ```
+ {
+    "pricePerProduct": <double>,
+    "soldQuantity": <int>
+ }
+ ```
+
+
 ## Meta
 
 Thiago Kienbaum – [LinkedIn](https://www.linkedin.com/in/thiago-kienbaum/) – thiago.kienbaum@hotmail.com
