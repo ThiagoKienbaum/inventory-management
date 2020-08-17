@@ -24,6 +24,16 @@ public class Product implements Serializable {
     private int totalSold = 0;
     private double totalProfit = 0;
 
+    public Product() {
+    }
+
+    public Product(String name, String category, double cost, int quantity) {
+        this.name = name;
+        this.category = category;
+        this.cost = cost;
+        this.quantity = quantity;
+    }
+
     public void addProductToInventory (int quantityToAdd) {
         this.quantity += quantityToAdd;
     }
