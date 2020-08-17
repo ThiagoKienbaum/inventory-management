@@ -39,11 +39,9 @@ public class Product implements Serializable {
     }
 
     public void sellProduct (Sale sale) {
-        if (this.quantity >= sale.getSoldQuantity()) {
-            this.quantity -= sale.getSoldQuantity();
-            this.totalSold += sale.getSoldQuantity();
-            this.totalProfit = (sale.getPricePerProduct() - this.cost) * this.totalSold;
-        }
+        this.quantity -= sale.getSoldQuantity();
+        this.totalSold += sale.getSoldQuantity();
+        this.totalProfit = (sale.getPricePerProduct() - this.cost) * this.totalSold;
     }
 
     public Long getId() {
