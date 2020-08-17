@@ -27,11 +27,14 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(String name, String category, double cost, int quantity) {
+    public Product(Long id, String name, String category, double cost, int quantity, int totalSold, double totalProfit) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.cost = cost;
         this.quantity = quantity;
+        this.totalSold = totalSold;
+        this.totalProfit = totalProfit;
     }
 
     public void addProductToInventory (int quantityToAdd) {
